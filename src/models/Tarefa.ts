@@ -1,6 +1,6 @@
-import * as enums from '../Utils/enums/tarefa'
+import * as enums from '../utils/enums/Tarefa'
 
-class Task {
+class Tarefa {
   titulo: string
   prioridade: enums.Prioridade
   status: enums.Status
@@ -8,13 +8,13 @@ class Task {
   id: number
 
   constructor(
-    title: string,
+    titulo: string,
     prioridade: enums.Prioridade,
     status: enums.Status,
     descricao: string,
     id: number
   ) {
-    this.titulo = title
+    this.titulo = titulo
     this.prioridade = prioridade
     this.status = status
     this.descricao = descricao
@@ -22,4 +22,4 @@ class Task {
   }
 }
 
-export default Task
+export default Tarefa

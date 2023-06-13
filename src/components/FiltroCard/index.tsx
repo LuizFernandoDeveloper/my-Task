@@ -1,9 +1,14 @@
+import React from 'react';
+
+
 import { useDispatch, useSelector } from 'react-redux'
-import * as S from './styled'
-import { alterarFiltro } from '../../store/reducers/filtro'
-import * as enums from '../../Utils/enums/tarefa'
+import * as S from './styles' /* PARA INPORTA TUDO */
+import { alteraFiltro } from '../../store/reducers/filtro'
+import * as enums from '../../utils/enums/Tarefa'
 import { RootReducer } from '../../store'
+
 export type Props = {
+  /* CRIADO PARA USO NO style.ts */
   legenda: string
   criterio: 'prioridade' | 'status' | 'todas'
   valor?: enums.Prioridade | enums.Status
@@ -11,7 +16,7 @@ export type Props = {
 
 const FiltroCard = ({ legenda, criterio, valor }: Props) => {
   const dispatch = useDispatch()
-  const { filtro, tarefas: task } = useSelector((state: RootReducer) => state)
+  const { filtro, tarefas } = useSelector((state: RootReducer) => state)
 
   const verificaEstaAtivo = () => {
     const mesmoCriterio = filtro.criterio === criterio
@@ -21,29 +26,29 @@ const FiltroCard = ({ legenda, criterio, valor }: Props) => {
   }
 
   const contarTarefas = () => {
-    if (criterio === 'todas') return task.itens.length
+    if (criterio === 'todas') return tarefas.itens.length
     if (criterio === 'prioridade') {
-      return task.itens.filter((item) => item.prioridade === valor).length
+      return tarefas.itens.filter((item) => item.prioridade === valor).length
     }
     if (criterio === 'status') {
-      return task.itens.filter((item) => item.status === valor).length
+      return tarefas.itens.filter((item) => item.status === valor).length
     }
   }
 
-  const filtrar = () => {
+  const filtar = () => {
     dispatch(
-      alterarFiltro({
+      alteraFiltro({
         criterio,
         valor
       })
     )
   }
 
-  const contador = contarTarefas()
   const ativo = verificaEstaAtivo()
+  const contador = contarTarefas()
 
   return (
-    <S.Card ativo={ativo} onClick={filtrar}>
+    <S.Card ativo={ativo} onClick={filtar}>
       <S.Contador>{contador}</S.Contador>
       <S.Label>{legenda}</S.Label>
     </S.Card>

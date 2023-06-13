@@ -1,13 +1,13 @@
 import styled, { createGlobalStyle } from 'styled-components'
 import variaveis from './variaveis'
-import { Button } from '../componets/Tarefa/styles'
+
 const EstiloGlobal = createGlobalStyle`
-  *{
+  * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Roboto, sans-serif;
-    list-style-type:none;
+    font-family: 'Roboto', sans-serif;
+    list-style: none;
   }
 `
 export const Container = styled.div`
@@ -15,17 +15,19 @@ export const Container = styled.div`
   grid-template-columns: 224px auto;
 `
 export const MainContainer = styled.main`
-  padding: 10px 40px;
-  height: 80vh;
-  overflow-y: auto;
+  padding: 0 40px;
+  /* PARA BARRA ESQUERTA FICAR PARADA */
+  height: 100vh;
+  overflow-y: scroll;
 `
 export const Titulo = styled.h2`
   display: block;
-  margim-top: 40px;
-  margim-bottom: 40px;
+  margin-top: 40px;
+  margin-bottom: 40px;
   font-size: 18px;
-  font-weght: bold;
+  font-weight: bold;
 `
+
 export const Campo = styled.input`
   padding: 8px;
   background-color: #fff;
@@ -35,7 +37,20 @@ export const Campo = styled.input`
   border-color: #666666;
   width: 100%;
 `
-export const ButtonSalvar = styled(Button)`
+
+export const Botao = styled.button`
+  font-weight: bold;
+  font-size: 12px;
+  color: #fff;
+  padding: 8px 12px;
+  border: none;
+  cursor: pointer;
+  background-color: ${variaveis.azulEscuro};
+  border-radius: 8px;
+  margin-right: 8px;
+`
+
+export const BotaoSalvar = styled(Botao)`
   background-color: ${variaveis.verde};
 `
 
