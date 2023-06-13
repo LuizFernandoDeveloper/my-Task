@@ -14,7 +14,7 @@
 ![pagina Do App](./readme-media/Captura%20de%20tela%20de%202023-06-13%2015-29-18.png) <br>
 ![pagina Do App](./readme-media/Captura%20de%20tela%20de%202023-06-13%2015-29-32.png)
 
- #### git Ilustrativo da aplicação:
+ #### GIF ilustrativo da aplicação:
  ![pagina Do App](./readme-media/Grava%C3%A7%C3%A3o-de-tela-de-13-06-2023-15_11_08.gif)
 
 
