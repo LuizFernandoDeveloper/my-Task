@@ -15,6 +15,7 @@ const ListaDeTarefas = () => {
 
   const filtraTarefas = () => {
     let tarefasFiltradas = task
+
     if (termo !== undefined) {
       tarefasFiltradas = tarefasFiltradas.filter(
         (item) =>
@@ -51,12 +52,14 @@ const ListaDeTarefas = () => {
     return mensagem
   }
   const mensagem = exibeResultado(task.length)
-  const filtrotask = filtraTarefas()
+
+  const filterTasks = filtraTarefas()
+
   return (
     <Container>
       <Resultado as="p">{mensagem}</Resultado>
       <ul>
-        {filtrotask.map((t) => (
+        {filterTasks.map((t) => (
           <li key={t.id}>
             <Tarefa
               id={t.id}
