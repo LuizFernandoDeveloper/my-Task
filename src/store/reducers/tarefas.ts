@@ -1,35 +1,30 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import Task from '../../models/task'
 import * as enums from '../../utils/enums/tarefa'
-const tarefasSilce = createSlice({
+import { v4 as uuidv4 } from 'uuid'
+
+const tarefasSlice = createSlice({
   name: 'task',
   initialState: {
     itens: [
-      new Task(
-        'estudar javascript',
-        enums.Prioridade.IMPORTANTE,
-        enums.Status.PENDENTE,
-        '',
-        1
-      ),
-      new Task(
-        'estudar typescript',
-        enums.Prioridade.URGENTE,
-        enums.Status.CONCLUIDA,
-        'rever aula 2 ',
-        2
-      ),
-      new Task(
-        'estudar React',
-        enums.Prioridade.NORMAL,
-        enums.Status.PENDENTE,
-        'praticar o use efectts',
-        3
-      )
+      {
+        id: uuidv4(),
+        descricao: 'test 01',
+        titulo: 'estudar javascript',
+        prioridade: enums.Prioridade.IMPORTANTE,
+        status: enums.Status.CONCLUIDA
+      },
+      {
+        id: uuidv4(),
+        descricao: 'test 02',
+        titulo: 'estudar typescript',
+        prioridade: enums.Prioridade.IMPORTANTE,
+        status: enums.Status.PENDENTE
+      }
     ]
   },
   reducers: {
-    remover: (state, action: PayloadAction<number>) => {
+    remover: (state, action: PayloadAction<string>) => {
       //state.itens = state.itens.filter((task) => task.id !== action.payload)
       state.itens = [
         ...state.itens.filter((task) => task.id !== action.payload)
@@ -59,21 +54,19 @@ const tarefasSilce = createSlice({
     },
     alteraState: (
       state,
-      action: PayloadAction<{ id: number; finalizado: boolean }>
+      action: PayloadAction<{ id: string; checked: boolean }>
     ) => {
       const indexDaTarefa = state.itens.findIndex(
         (t) => t.id === action.payload.id
       )
 
-      if (indexDaTarefa >= 0) {
-        state.itens[indexDaTarefa].status = action.payload.finalizado
-          ? enums.Status.CONCLUIDA
-          : enums.Status.PENDENTE
-      }
+      action.payload.checked
+        ? (state.itens[indexDaTarefa].status = enums.Status.CONCLUIDA)
+        : (state.itens[indexDaTarefa].status = enums.Status.PENDENTE)
     }
   }
 })
 
-export const { remover, editar, cadastra, alteraState } = tarefasSilce.actions
+export const { remover, editar, cadastra, alteraState } = tarefasSlice.actions
 
-export default tarefasSilce.reducer
+export default tarefasSlice.reducer
