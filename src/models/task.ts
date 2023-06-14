@@ -1,24 +1,26 @@
+import { StringLiteralLike } from 'typescript'
 import * as enums from '../utils/enums/tarefa'
 
 class Task {
+  id: string
   titulo: string
   prioridade: enums.Prioridade
   status: enums.Status
   descricao: string
-  id: number
 
   constructor(
+    id: string,
     title: string,
     prioridade: enums.Prioridade,
     status: enums.Status,
     descricao: string,
-    id: number
+    
   ) {
+    this.id = id
     this.titulo = title
     this.prioridade = prioridade
     this.status = status
     this.descricao = descricao
-    this.id = id
   }
 }
 
