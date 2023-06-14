@@ -6,25 +6,28 @@ import * as enums from '../../utils/enums/tarefa'
 import Task from '../../models/task'
 import { cadastra } from '../../store/reducers/tarefas'
 import { useNavigate } from 'react-router-dom'
+import { v4 as uuidv4 } from 'uuid'
+
 const Formulario = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const [titulo, setTitulo] = useState('')
   const [descricao, setDescricao] = useState('')
   const [prioridade, setPrioridade] = useState(enums.Prioridade.NORMAL)
-  let id = 0
+
   const newTask = (event: FormEvent) => {
-    id = id++
     event.preventDefault()
-    const newTask = new Task(
+
+    const newTask = {
+      id: uuidv4(),
       titulo,
       prioridade,
-      enums.Status.PENDENTE,
-      descricao,
-      id
-    )
+      status: enums.Status.PENDENTE,
+      descricao
+    }
 
     dispatch(cadastra(newTask))
+
     navigate('/')
   }
   return (
