@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import Task from '../../models/task'
-import * as enums from '../../Utils/enums/tarefa'
+import * as enums from '../../utils/enums/tarefa'
 const tarefasSilce = createSlice({
   name: 'task',
   initialState: {

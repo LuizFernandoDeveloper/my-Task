@@ -1,9 +1,9 @@
-import BarraLateral from '../../container/BarraLateral'
-import ListaDeTarefas from '../../container/ListaDeTarefas/idenx'
+import Sidebar from '../../container/Sidebar'
+import ListaDeTarefas from '../../container/ListaDeTarefas'
 
 const Home = () => (
   <>
-    <BarraLateral />
+    <Sidebar />
     <ListaDeTarefas />
   </>
 )

@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import variaveis from '../../styles/variaveis'
-import * as enums from '../../Utils/enums/tarefa'
+import * as enums from '../../utils/enums/tarefa'
 export type Props = {
   prioridade?: enums.Prioridade
   status?: enums.Status

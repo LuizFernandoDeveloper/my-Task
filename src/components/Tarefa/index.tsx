@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux'
 import { remover, editar, alteraState } from '../../store/reducers/tarefas'
 import Task from '../../models/task'
 import { ButtonSalvar } from '../../styles/index'
-import * as enums from '../../Utils/enums/tarefa'
+import * as enums from '../../utils/enums/tarefa'
 type Props = Task
 
 const Tarefa = ({

@@ -1,10 +1,10 @@
 import { useDispatch, useSelector } from 'react-redux'
-import FiltroCard from '../../componets/FiltroCard'
+import FiltroCard from '../../components/FiltroCard'
 import * as S from './styles'
 import { Campo } from '../../styles'
 import { RootReducer } from '../../store'
 import { alterarTermo } from '../../store/reducers/filtro'
-import * as enums from '../../Utils/enums/tarefa'
+import * as enums from '../../utils/enums/tarefa'
 const BarraLateral = () => {
   const dispatch = useDispatch()
   const { termo } = useSelector((state: RootReducer) => state.filtro)

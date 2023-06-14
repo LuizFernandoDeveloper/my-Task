@@ -1,6 +1,6 @@
 import styled, { createGlobalStyle } from 'styled-components'
 import variaveis from './variaveis'
-import { Button } from '../componets/Tarefa/styles'
+import { Button } from '../components/Tarefa/styles'
 const EstiloGlobal = createGlobalStyle`
   *{
     margin: 0;
