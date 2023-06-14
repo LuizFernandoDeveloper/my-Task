@@ -8,11 +8,11 @@ import * as enums from '../../utils/enums/tarefa'
 type Props = Task
 
 const Tarefa = ({
+  id,
   titulo,
   prioridade,
   status,
-  descricao: descricaoOriginal,
-  id
+  descricao: descricaoOriginal
 }: Props) => {
   const dispatch = useDispatch()
   const [editando, setEditando] = useState(false)
@@ -27,19 +27,19 @@ const Tarefa = ({
     setDescricao(descricaoOriginal)
   }
 
-  function alteraStatus(event: ChangeEvent<HTMLInputElement>) {
-    console.log(event.target.checked)
-    dispatch(alteraState({ id, finalizado: event.target.checked }))
+  function changeStatus(event: ChangeEvent<HTMLInputElement>) {
+    const { id, checked } = event.target
+    dispatch(alteraState({ id, checked }))
   }
 
   return (
     <S.Card>
       <S.TitleTask>
         <input
-          id="checkbox"
+          id={id}
           type="checkbox"
-          checked={status === enums.Status.CONCLUIDA}
-          onChange={alteraStatus}
+          checked={status === enums.Status.CONCLUIDA ? true : false}
+          onChange={changeStatus}
         />
         <label htmlFor="checkbox">
           <S.Title>{titulo}</S.Title>
