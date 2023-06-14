@@ -1,6 +1,7 @@
 import { Filtro } from './../../container/Sidebar/styles'
 import { PayloadAction, createSlice } from '@reduxjs/toolkit'
 import * as enums from '../../utils/enums/tarefa'
+
 type FiltroState = {
   termo?: string
   criterio: 'prioridade' | 'status' | 'todas'
